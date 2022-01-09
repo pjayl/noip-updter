@@ -10,13 +10,12 @@ WORKDIR /prj
 RUN useradd -m -r user && \
     chown user /prj
 
-
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
+USER user
 
 COPY . .
 
-USER user
+#COPY requirements.txt ./
+RUN pip install -r requirements.txt
 
 
 ARG GIT_HASH
